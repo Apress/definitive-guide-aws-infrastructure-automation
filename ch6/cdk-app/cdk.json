@@ -1,0 +1,37 @@
+{
+    "app": "python3 app.py",
+    "context": {
+        "Vpc": {
+            "dev": "dev",
+            "qa": null,
+            "stg": null,
+            "prod": "prod"
+        },
+        "ConnectPortByOs": {
+            "Windows2016Base": 3389,
+            "AmazonLinux2": 22
+        },
+        "AmiByOs": {
+            "us-east-1": {
+                "Windows2016Base": "ami-06bee8e1000e44ca4",
+                "AmazonLinux2": "ami-0c6b1d09930fac512"
+            },
+            "us-west-2": {
+                "Windows2016Base": "ami-07f35a597a32e470d",
+                "AmazonLinux2": "ami-0cb72367e98845d43"
+            }
+        },
+        "AllowedValues": {
+            "DeployEnv": ["dev", "qa", "stg", "prod"],
+            "InstanceType": ["t2.nano", "t2.micro", "t2.small", "t2.medium", "m4.large", "m4.xlarge"],
+            "OperatingSystem": ["AmazonLinux2", "Windows2016Base"]
+        },
+        "Defaults": {
+            "DeployEnv": "dev",
+            "InstanceType": "t2.nano",
+            "OperatingSystem": "AmazonLinux2",
+            "KeyName": "",
+            "PublicCidr": "0.0.0.0/0"
+        }
+    }
+}
