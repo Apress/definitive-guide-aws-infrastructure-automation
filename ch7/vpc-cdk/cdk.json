@@ -1,0 +1,26 @@
+{
+    "app": "python3 app.py",
+    "context": {
+        "BaseCidr": {
+            "us-east-1": {
+                "dev": "10.0.0.0/16",
+                "qa": "10.1.0.0/16",
+                "stg": "10.2.0.0/16",
+                "prod": "10.3.0.0/16"
+            },
+            "us-west-2": {
+                "dev": "10.10.0.0/16",
+                "qa": "10.11.0.0/16",
+                "stg": "10.12.0.0/16",
+                "prod": "10.13.0.0/16"                
+            }
+        },
+        "AwsDns": true,
+        "HighAvailability": {
+            "dev": false,
+            "qa": false,
+            "stg": true,
+            "prod": true
+        }
+    }
+}

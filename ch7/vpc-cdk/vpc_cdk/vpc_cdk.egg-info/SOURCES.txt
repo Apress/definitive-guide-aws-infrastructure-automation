@@ -1,0 +1,6 @@
+README.md
+vpc_cdk/vpc_cdk.egg-info/PKG-INFO
+vpc_cdk/vpc_cdk.egg-info/SOURCES.txt
+vpc_cdk/vpc_cdk.egg-info/dependency_links.txt
+vpc_cdk/vpc_cdk.egg-info/requires.txt
+vpc_cdk/vpc_cdk.egg-info/top_level.txt
