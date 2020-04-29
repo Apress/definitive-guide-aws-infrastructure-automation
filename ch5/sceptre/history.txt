@@ -1,0 +1,18 @@
+$ sceptre new project infrabook
+sceptre new project infrabook
+Please enter a project_code [infrabook]:
+Please enter a region []: us-east-1
+
+$ tree
+.
+└── infrabook
+    ├── config
+    │   └── config.yaml
+    └── templates
+
+3 directories, 1 file
+
+$ cat infrabook/config/config.yaml
+project_code: infrabook
+region: us-east-1
+

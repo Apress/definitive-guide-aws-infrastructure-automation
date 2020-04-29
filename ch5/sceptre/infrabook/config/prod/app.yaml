@@ -1,0 +1,11 @@
+template_path: app.yaml
+parameters:
+  KeyName: infrabook
+  OperatingSystem: AmazonLinux2
+  InstanceType: m4.large
+  PublicLocation: 0.0.0.0/0
+hooks:
+  after_create: 
+    - !cmd "ssh -i ~/.ssh/infrabook.pem ec2-user@$(aws cloudformation describe-stacks --stack-name infrabook-prod-app --query \"Stacks[0].Outputs[3].OutputValue\" --output text)"
+  before_delete:
+    - !cmd "echo About to be deleted!"
