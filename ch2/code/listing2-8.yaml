@@ -1,0 +1,4 @@
+template_path: <...>
+hooks:
+  before_create:
+    - !custom_hook <argument> # The argument is accessible via self.argument

@@ -1,0 +1,84 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: |
+  Demo parent stack for nested stack demonstration.
+
+Parameters:
+  StagingBucket:
+    Description: Bucket where templates are staged
+    Type: String
+
+  Environment:
+    Description: Application environment
+    Type: String
+    Default: test
+    AllowedValues:
+      - test
+      - prod
+
+Mappings:
+  Global:
+    Tags:
+      App: MyAwesomeApp
+      CostCenter: IT
+
+Conditions:
+  Prod: !Equals [ !Ref Environment, 'prod' ]
+
+Resources:
+  CustomerA:
+    Type: "AWS::CloudFormation::Stack"
+    Properties:
+      TemplateURL: !Sub "https://s3.amazonaws.com/${StagingBucket}/nested_stack_demo/listing4-29.yml"
+      Parameters:
+        CustomMappingsPrefix: CustomerA
+        StagingBucket: !Ref StagingBucket
+        Environment: !Ref Environment
+        InstanceType: t2.medium
+      Tags:
+        - Key: Customer
+          Value: CustomerA
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: App
+          Value: !FindInMap [ 'Global', 'Tags', 'App' ]
+        - Key: CostCenter
+          Value: !FindInMap [ 'Global', 'Tags', 'CostCenter' ]
+
+  CustomerB:
+    Type: "AWS::CloudFormation::Stack"
+    Properties:
+      TemplateURL: !Sub "https://s3.amazonaws.com/${StagingBucket}/nested_stack_demo/listing4-29.yml"
+      Parameters:
+        StagingBucket: !Ref StagingBucket
+        Environment: !Ref Environment
+        InstanceType: t2.small
+        OperatingSystem: Windows2016Base
+        PublicLocation: '1.2.3.4/32'
+      Tags:
+        - Key: Customer
+          Value: CustomerB
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: App
+          Value: !FindInMap [ 'Global', 'Tags', 'App' ]
+        - Key: CostCenter
+          Value: !FindInMap [ 'Global', 'Tags', 'CostCenter' ]
+
+  CustomerC:
+    Type: "AWS::CloudFormation::Stack"
+    Condition: Prod
+    Properties:
+      TemplateURL: !Sub "https://s3.amazonaws.com/${StagingBucket}/nested_stack_demo/listing4-29.yml"
+      Parameters:
+        StagingBucket: !Ref StagingBucket
+        Environment: !Ref Environment
+        InstanceType: t2.large
+      Tags:
+        - Key: Customer
+          Value: CustomerC
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: App
+          Value: !FindInMap [ 'Global', 'Tags', 'App' ]
+        - Key: CostCenter
+          Value: !FindInMap [ 'Global', 'Tags', 'CostCenter' ]

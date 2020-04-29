@@ -1,0 +1,9 @@
+AmiByOs:
+  us-east-1:
+    ValidAMIs: 
+      - ami-06bee8e1000e44ca4
+      - ami-0c6b1d09930fac512
+  us-west-2:
+    ValidAMIs:
+      - ami-07f35a597a32e470d
+      - ami-0cb72367e98845d43
