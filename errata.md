@@ -17,10 +17,3 @@ Second error, the cdk sets a venv , yet when you are activating it this is the i
 
 `$ source .env/bin/activate` , that won't work either in the cdk-app folder, because the folder is .venv ]
 
-***
-
-On **page xx** [Summary of error]:
- 
-Details of error here. Highlight key pieces in **bold**.
-
-***
