@@ -15,7 +15,7 @@ ERROR: No matching distribution found for aws-cdk.ec2 ```
 
 Second error, the cdk sets a venv , yet when you are activating it this is the instruction
 
-`$ source .env/bin/activate` , that won't work either in the cdk-app folder, because the folder is .venv
+`$ source .env/bin/activate` , that won't work either in the cdk-app folder, because the folder is .venv ]
 
 ***
 
